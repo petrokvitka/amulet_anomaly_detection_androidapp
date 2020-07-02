@@ -21,13 +21,10 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
     private static String fileName = null;
 
-    //private RecordButton recordButton = null;
     private MediaRecorder recorder = null;
 
-    //private PlayButton playButton = null;
     private MediaPlayer player = null;
 
-    //Requesting permission to RECORD_AUDIO
     private boolean permissionToRecordAccepted = false;
     private String [] permissions = {Manifest.permission.RECORD_AUDIO};
 
@@ -42,107 +39,6 @@ public class MainActivity extends AppCompatActivity {
         }
         if (!permissionToRecordAccepted) finish();
     }
-    /*
-    private void onRecord(boolean start) {
-        if (start) {
-            startRecording();
-        } else {
-            stopRecording();
-        }
-    }
-
-    private void onPlay(boolean start) {
-        if (start) {
-            startPlaying();
-        } else {
-            stopPlaying();
-        }
-    }
-
-    private void startPlaying() {
-        player = new MediaPlayer();
-        try {
-            player.setDataSource(fileName);
-            player.prepare();
-            player.start();
-        } catch (IOException e) {
-            Log.e(LOG_TAG, "prepare() failed");
-        }
-    }
-
-    private void stopPlaying() {
-        player.release();
-        player = null;
-    }
-
-    private void startRecording() {
-        recorder = new MediaRecorder();
-        recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-        recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-        recorder.setOutputFile(fileName);
-        recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
-
-        try {
-            recorder.prepare();
-        } catch (IOException e) {
-            Log.e(LOG_TAG, "prepare() failed");
-        }
-
-        recorder.start();
-    }
-
-    private void stopRecording() {
-        recorder.stop();
-        recorder.release();
-        recorder = null;
-    }
-
-    class RecordButton extends androidx.appcompat.widget.AppCompatButton {
-        boolean mStartRecording = true;
-
-        OnClickListener clicker = new OnClickListener() {
-            public void onClick(View v) {
-                //System.out.println("Clicked record");
-                onRecord(mStartRecording);
-                if (mStartRecording) {
-                    setText("Stop recording");
-                    Toast.makeText(getApplicationContext(), "Recording started", Toast.LENGTH_LONG).show();
-                } else {
-                    setText("Start recording");
-                }
-                mStartRecording = !mStartRecording;
-            }
-        };
-
-        public RecordButton(Context ctx) {
-            super(ctx);
-            setText("Start recording");
-            setOnClickListener(clicker);
-        }
-    }
-
-    class PlayButton extends androidx.appcompat.widget.AppCompatButton {
-        boolean mStartPlaying = true;
-
-        OnClickListener clicker = new OnClickListener() {
-            public void onClick(View v) {
-                //System.out.println("Clicked playing");
-                onPlay(mStartPlaying);
-                if (mStartPlaying) {
-                    setText("Stop playing");
-                } else {
-                    setText("Start playing");
-                }
-                mStartPlaying = !mStartPlaying;
-            }
-        };
-
-        public PlayButton(Context ctx) {
-            super(ctx);
-            setText("Start playing");
-            setOnClickListener(clicker);
-        }
-    }*/
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -153,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
 
         ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
 
-        //----------
         setContentView(R.layout.activity_main);
 
         evaluate = (Button) findViewById(R.id.evaluate);
@@ -210,7 +105,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ///*
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -224,40 +118,8 @@ public class MainActivity extends AppCompatActivity {
                     //do something
                 }
             }
-        });//*/
+        });
 
-
-
-
-
-
-        //----------
-
-        //RelativeLayout rl = new RelativeLayout( this);
-
-        //LinearLayout ll = new LinearLayout(this);
-        //recordButton = new RecordButton(this);
-        //ll.addView(recordButton,
-                //new LinearLayout.LayoutParams(
-                        //ViewGroup.LayoutParams.WRAP_CONTENT,
-                        //ViewGroup.LayoutParams.WRAP_CONTENT,
-                        //0));
-        //rl.addView(recordButton,
-                //new RelativeLayout.LayoutParams(
-                        //ViewGroup.LayoutParams.WRAP_CONTENT,
-                        //ViewGroup.LayoutParams.WRAP_CONTENT));
-        //playButton = new PlayButton(this);
-        //ll.addView(playButton,
-                //new LinearLayout.LayoutParams(
-                        //ViewGroup.LayoutParams.WRAP_CONTENT,
-                        //ViewGroup.LayoutParams.WRAP_CONTENT,
-                        //0));
-        //rl.addView(playButton,
-                //new LinearLayout.LayoutParams(
-                        //ViewGroup.LayoutParams.WRAP_CONTENT,
-                        //ViewGroup.LayoutParams.WRAP_CONTENT));
-        //setContentView(ll);
-        //setContentView(rl);
     }
 
     public void openEvaluation() {
@@ -278,6 +140,5 @@ public class MainActivity extends AppCompatActivity {
             player = null;
         }
     }
-
 
 }
